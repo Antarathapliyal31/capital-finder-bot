@@ -4,6 +4,7 @@ import streamlit as st
 st.title("Capital Finding Bot")
 user_input=st.text_input("Enter a country name ")
 prompt=PromptTemplate.from_template("What is the capital of {country} ?")
+
 #temperature controls how random or creative the model’s responses are.
 #0-Very focused, deterministic (same input = same output every time)
 #0.5-Balanced — some creativity, still consistent
