@@ -17,9 +17,8 @@ Features:
 How to Run
 1. Install dependencies:
    pip install streamlit langchain-community langchain-openai openai
-2. Download Ollama
-3. Sign in at https://platform.openai.com/account/api-keys & copy your API key.
-4. Run the app - streamlit run capital_bot.py
+2. Sign in at https://platform.openai.com/account/api-keys & copy your API key.
+3. Run the app - streamlit run capital_bot.py
 
 This bot is part of my learning journey in building LLM-based apps using LangChain and OpenAI.
 I wanted to explore:
