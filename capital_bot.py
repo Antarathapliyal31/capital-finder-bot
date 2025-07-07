@@ -9,6 +9,8 @@ prompt=PromptTemplate.from_template("What is the capital of {country} ?")
 # Ollama = A free app to run powerful AI chatbots directly on your laptop. No internet, no API key, no cost.
 llm = Ollama(model="mistral", temperature=0,num_predict=26)
 #Earlier I was not using temperature and num_predict parameters, it was taking 5.30 seconds, after using them it reduced the response time to 1.26 seconds)
+#num_predict parameter limits how many tokens (words or word-parts) the model is allowed to generate
+#less tokens= faster response
 chain = prompt | llm
 user_input=input("Enter a country name")
 response=chain.invoke({"country":user_input})
