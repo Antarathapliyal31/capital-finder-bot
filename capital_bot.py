@@ -1,7 +1,6 @@
 from langchain.prompts import PromptTemplate
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM
 import streamlit as st
-
 st.title("Capital Finding Bot")
 user_input=st.text_input("Enter a country name ")
 prompt=PromptTemplate.from_template("What is the capital of {country} ?")
@@ -10,7 +9,7 @@ prompt=PromptTemplate.from_template("What is the capital of {country} ?")
 #0.5-Balanced — some creativity, still consistent
 #0.8+-Very creative/random — great for storytelling or brainstorming
 # Ollama = A free app to run powerful AI chatbots directly on your laptop. No internet, no API key, no cost.
-llm = Ollama(model="mistral", temperature=0, num_predict=26)
+llm = OllamaLLM(model="mistral", temperature=0, num_predict=20)
 chain = prompt | llm
 if st.button("Find the Capital"):
     if user_input:
@@ -18,7 +17,6 @@ if st.button("Find the Capital"):
         st.success(response)
     else:
         st.warning("Please enter a country name")
-
 
 
 
