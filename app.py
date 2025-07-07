@@ -8,7 +8,7 @@ user_input=st.text_input("Enter a country name ")
 prompt=PromptTemplate.from_template("What is the capital of {country} ?")
 if api:
     os.environ["OPENAI_API_KEY"] = api
-    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0,max_tokens=20)
+    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
     chain=prompt | llm
     if st.button("Find the Capital"):
         if user_input:
