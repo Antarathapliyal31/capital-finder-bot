@@ -13,7 +13,7 @@ st.caption("Ask me about any country's capital city!")
 # Check for FAISS index
 if not os.path.exists("faiss_index"):
     st.error(
-        "FAISS index not found. Run `python build_vectorstore.py` first to build the index."
+        "FAISS index not found. Run python build_vectorstore.py first to build the index."
     )
     st.stop()
 
