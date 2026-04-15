@@ -11,15 +11,15 @@ load_dotenv()
 
 FAISS_INDEX_PATH = "faiss_index"
 
-SYSTEM_PROMPT = """You are a concise capital cities expert. Answer the user's question using ONLY the provided context. If the answer is not in the context, say "I don't have that information."
+SYSTEM_PROMPT = """You are a concise capital cities expert. Answer the user's question using ONLY the provided context. 
+If the answer is not in the context, say "I don't have that information."
 
 Rules:
 - Be brief and direct.
 - State the capital name first, then add one key fact if relevant.
 - Do not repeat the question.
 
-Context:
-{context}"""
+Context:{context}"""
 
 def load_vectorstore():
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
