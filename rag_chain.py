@@ -1,5 +1,4 @@
-"""RAG chain for the Capital Finder Bot with prompt engineering and token optimization."""
-
+#RAG chain for the Capital Finder Bot with prompt engineering and token optimization.
 import os
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
