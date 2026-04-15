@@ -1,8 +1,10 @@
-"""Streamlit UI for the Capital Finder Bot."""
+"""Streamlit UI for the Capital Finder Bot with Langfuse tracing."""
 
 import os
 import streamlit as st
 from dotenv import load_dotenv
+from langfuse import Langfuse
+from langfuse.callback import CallbackHandler as LangfuseCallbackHandler
 
 load_dotenv()
 
@@ -16,6 +18,10 @@ if not os.path.exists("faiss_index"):
         "FAISS index not found. Run python build_vectorstore.py first to build the index."
     )
     st.stop()
+
+# Initialize Langfuse client once per session
+if "langfuse" not in st.session_state:
+    st.session_state.langfuse = Langfuse()
 
 # Load chain once per session
 if "chain" not in st.session_state:
@@ -37,7 +43,12 @@ if question := st.chat_input("e.g. What is the capital of Japan?"):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            answer = st.session_state.chain.invoke(question)
+            # Create a Langfuse callback handler for this query
+            langfuse_handler = LangfuseCallbackHandler()
+            answer = st.session_state.chain.invoke(
+                question, config={"callbacks": [langfuse_handler]}
+            )
+            langfuse_handler.flush()
         st.markdown(answer)
 
     st.session_state.messages.append({"role": "assistant", "content": answer})
