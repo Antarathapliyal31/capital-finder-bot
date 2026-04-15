@@ -1,5 +1,4 @@
-"""Build FAISS vector store from the capitals knowledge base."""
-
+#Build FAISS vector store from the capitals knowledge base.
 import os
 from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
